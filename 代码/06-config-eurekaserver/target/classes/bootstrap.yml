@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      # uri: http://configserver.com:9999,http://configserver.com:8888
+      uri: http://configserver.com:9999
+      label: master
+      name: application-eureka-config
+      profile: dev
+
+
+

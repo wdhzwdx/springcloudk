@@ -1,0 +1,6 @@
+com\kaikeba\provider\controller\DepartController.class
+com\kaikeba\provider\repository\DepartRepository.class
+com\kaikeba\provider\bean\Depart.class
+com\kaikeba\provider\service\DepartService.class
+com\kaikeba\provider\service\DepartServiceImpl.class
+com\kaikeba\provider\ProviderApplication.class

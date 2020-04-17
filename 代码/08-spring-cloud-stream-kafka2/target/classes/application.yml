@@ -1,0 +1,27 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+spring:
+  application:
+    name: abcmsc-stream-kafka
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: kafkaOS1:9092,kafkaOS2:9092,kafkaOS3:9092
+          auto-create-topics: true
+
+      bindings:
+        output:   # 指定要绑定的Channel
+          destination: persons
+          content-type: text/plain
+
+        xxx:     # 指定要绑定的Channel
+          destination: countries
+          content-type: text/plain
+
+        input:    # 指定要绑定的Channel
+          destination: persons

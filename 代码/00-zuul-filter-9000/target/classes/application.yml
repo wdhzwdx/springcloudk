@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+spring:
+  application:
+    name: abcmsc-zuul-depart
+
+zuul:
+  routes:
+    # 指定微服务的路由规则
+    abcmsc-consumer-depart-8080: /abc8080/**
+    abcmsc-consumer-depart-8090: /abc8090/**
+    abcmsc-consumer-depart: /abc012/**
+
+
+
+
+

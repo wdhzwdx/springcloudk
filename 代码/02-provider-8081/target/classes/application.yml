@@ -1,0 +1,78 @@
+server:
+  port: 8081
+
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  # 配置数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///test?useUnicode=true&amp;characterEncoding=utf8
+    username: root
+    password: 111
+
+  application:
+    name: abcmsc-provider-depart
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+      #defaultZone: http://eureka8100.com:8100/eureka,http://eureka8200.com:8200/eureka,http://eureka8300.com:8300/eureka
+
+  instance:
+    # 指定客户端每1秒向服务端发送一次心跳
+    lease-renewal-interval-in-seconds: 1
+    # 指定当前客户端若3秒钟内没有向服务端发送心跳，
+    # 则可以让服务端认为其已经宕机，可以踢除了
+    lease-expiration-duration-in-seconds: 3
+
+
+  # region与zone是1:n，zone与server是1:n
+  #    region: beijing
+  #    availability-zones:
+  #      beijing: haidian,daxing
+  #    service-url:
+  #      haidian: http://localhost1:8000/eureka,http://localhost2:8000/eureka,http://localhost2:8000/eureka
+  #      daxing: http://localhost4:8000/eureka,http://localhost5:8000/eureka,http://localhost6:8000/eureka
+  #    # 指定要连接的远程注册中心所在区域
+  #    fetch-remote-regions-registry: beijing
+
+  # 指定要连接的Eureka Server
+#  instance:
+#    instance-id: abcmsc-provider-depart-8081
+
+logging:
+  # 设置日志输出格式
+  pattern:
+    console: level-%level %msg%n
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: trace
+    com.abc.provider: debug
+
+info:
+  company.name: www.abc.com
+  company.addr: China Beijing
+  company.tel: 12345678
+  app.name: abc-msc
+  app.desc: mic-server-cloud
+  author: abc
+
+  # 开启actuator的所有监控终端
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # 单独开启shutdown监控终端
+#  endpoint:
+#    shutdown:
+#      enabled: true

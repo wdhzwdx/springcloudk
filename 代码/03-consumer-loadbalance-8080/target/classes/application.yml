@@ -1,0 +1,13 @@
+spring:
+  application:  # 指定微服务对外暴露的名称
+    name: abcmsc-consumer-depart
+
+eureka:
+  client:
+    service-url: # 指定Eureka服务注册中心
+      defaultZone: http://localhost:8000/eureka
+
+# 指定使用随机负载均衡策略
+#abcmsc-provider-depart:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

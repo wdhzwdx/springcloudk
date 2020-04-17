@@ -1,0 +1,13 @@
+server:
+  port: 9999
+
+# 指定当前工程所关联的Git远程库地址
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:waxjava/abcmsc-config-center.git
+          timeout: 5   # 获取到远程库连接的超时时限
+          default-label: master   # 指定要操作的远程库分支
+

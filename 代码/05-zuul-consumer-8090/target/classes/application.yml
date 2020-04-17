@@ -1,0 +1,11 @@
+server:
+  port: 8090
+
+spring:
+  application:  # 指定微服务对外暴露的名称
+    name: abcmsc-consumer-depart-8090
+
+eureka:
+  client:
+    service-url: # 指定Eureka服务注册中心
+      defaultZone: http://localhost:8000/eureka

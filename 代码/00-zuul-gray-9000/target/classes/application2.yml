@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+
+spring:
+            application:
+              name: abcmsc-zuul-depart
+
+zuul:
+  # 设置微服务路由规则
+  routes:
+    service8080:
+      path: /abc8080/**
+      serviceId: ribbon-route   # 指定该path由ribbon路由
+
+ribbon-route:
+  ribbon:
+    # 指定负载均衡策略为随机算法
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # 指定要负载均衡的服务器列表来自于配置文件
+    NIWSServiceListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    # 指定要负载均衡的服务器列表
+    listOfServers: localhost:8080, localhost:8081, localhost:8082
+
+# 禁止Ribbon使用Erueka
+ribbon:
+  eureka:
+    enabled: false
